@@ -37,19 +37,14 @@ namespace SearchingForAFile
                 if (searchResults[0].LastWriteTime > lastModification)
                 {
                     lastModification = searchResults[0].LastWriteTime;
-                    //var fileInfo = new FileInfo(searchResults[0].FullName);
-                    //string newDirectoryName = fileInfo.DirectoryName;
                     string newDirectoryName = searchResults[0].DirectoryName;
                     DirectoryInfo di2 = new DirectoryInfo(newDirectoryName);
                     zipPath = di2.FullName;
                     Compress(di2);
-                    
                 }
                 Console.WriteLine($"{searchResults[0].Name} was last modified on: {lastModification}");
                 Thread.Sleep(3000);
             }
-
-
         }
 
         public static void Compress(DirectoryInfo directorySelected)
